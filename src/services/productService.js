@@ -1,4 +1,3 @@
-const { v4: uuid } = require ("uuid");
 const Product = require("../database/Product");
 
 const getAllProducts = async() => {
@@ -13,17 +12,16 @@ const getOneProduct = async(productId) => {
 
 const createNewProduct = (newProduct) => {
     const productToInsert = {
-        ...newProduct
-        // id: uuid(),
-        // createdAt: new Date().toLocaleString("en-US",{timezone: "UTC"}),
-        // updatedAt: new Date().toLocaleString("en-US",{timezone: "UTC"}),
+        ...newProduct,
+        name: newProduct.name
     }
-    console.log(productToInsert.id+"insert");
+  
     const createdProduct = Product.createNewProduct(productToInsert);
     return createdProduct;
 }
 
 const updateOneProduct = (productId, changes) => {
+    console.log(productId, changes);
     const updatedOneProduct = Product.updateOneProduct(productId, changes);
     return updatedOneProduct;
 }

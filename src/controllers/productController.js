@@ -19,27 +19,18 @@ const getOneProduct = async(req, res) => {
 }
 
 const createNewProduct = (req, res) => {
-    const { body } = req.body;
-    console.log(body);
-    console.log("LLega controller");
-
-     if(
-         !body.id,
-         !body.name
-     ){
-         return ;
-     }
+    const {
+        body
+    } = req
 
     const newProduct = {
-        id:   body.id,
         name: body.name
     }
-
     const createdProduct = productService.createNewProduct(newProduct);
-    res.status(201).send({status: "OK", data: createdProduct})
+    res.status(201).send({status: "OK", message:"Se ha añadido correctamente el registro"})
 }
 
-const updateOneProduct = () => {
+const updateOneProduct = (req, res) => {
     const {
         body, 
         params: {productId}
