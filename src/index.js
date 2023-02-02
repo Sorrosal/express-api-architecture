@@ -8,6 +8,6 @@ app.use(express.json());
 app.use("/api/v1/products", v1ProductRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
+    console.log(`🚀 Server listening on port ${PORT}`);
     V1SwaggerDocs(app,PORT);
 })

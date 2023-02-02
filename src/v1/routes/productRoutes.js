@@ -28,7 +28,8 @@ router
     .get("/",productController.getAllProducts)
     .get("/:productId", productController.getOneProduct)
     .post("/", productController.createNewProduct)
-    .patch("/:productId", productController.updateOneProduct);
+    .patch("/:productId", productController.updateOneProduct)
+    .delete("/:productId", productController.deleteProduct);
     
 
 module.exports = router;

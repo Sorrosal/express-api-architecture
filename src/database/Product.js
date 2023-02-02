@@ -43,6 +43,17 @@ const getOneProduct = async(productId) => {
     }
 }
 
+const deleteProduct = async(productId) => {
+    try{
+        const product = await pool.query("DELETE FROM public.products where id = $1",[productId]);
+        if(!product){return;}
+        return productId;
+
+    } catch (error){
+        res.status(500).send(error);
+    }
+}
+
 const updateOneProduct = async(productId, changes) => {
     try{
         const product = await pool.query("UPDATE public.products SET name=$1 WHERE id = $2",[changes.name,productId]);
@@ -53,4 +64,4 @@ const updateOneProduct = async(productId, changes) => {
     }
 };
 
-module.exports = {getAllProducts, getOneProduct, createNewProduct, updateOneProduct}
+module.exports = {getAllProducts, getOneProduct, createNewProduct, updateOneProduct, deleteProduct}

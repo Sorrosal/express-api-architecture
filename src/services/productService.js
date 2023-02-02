@@ -10,6 +10,11 @@ const getOneProduct = async(productId) => {
     return product;
 };
 
+const deleteProduct = async(productId) => {
+    const product = await Product.deleteProduct(productId);
+    return product;
+};
+
 const createNewProduct = (newProduct) => {
     const productToInsert = {
         ...newProduct,
@@ -30,5 +35,6 @@ module.exports = {
     getAllProducts,
     getOneProduct,
     createNewProduct,
-    updateOneProduct
+    updateOneProduct,
+    deleteProduct
 };
